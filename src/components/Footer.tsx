@@ -1,120 +1,251 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Mail, Twitter, Linkedin, Github, Instagram } from "lucide-react";
+import {
+  Twitter,
+  Linkedin,
+  Github,
+  Instagram,
+  Mail,
+  ChevronRight,
+  Send,
+  Users,
+  Briefcase,
+  BarChart3,
+  CreditCard,
+  FileText,
+  User,
+  Building2,
+  MessageSquare,
+} from "lucide-react";
 import logo from "@/assets/knowva-logo.png";
-import footer from "@/assets/footer.jpg";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Newsletter subscription:", email);
+    setEmail("");
+  };
+
   return (
-    <footer className="relative overflow-hidden border-t border-slate-300">
-      {/* Background Image */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 z-0" 
-           style={{backgroundImage: `url(${footer})`, minHeight: '100%'}} />
-      
-      <div className="relative section-container py-20 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-2 space-y-6">
-            <img src={logo} alt="KNOWva" className="h-10 w-auto mb-4" />
-            <p className="text-slate-700 text-sm leading-relaxed max-w-sm">
-              Discover, compare, and evaluate AI tools — all in one place. Your centralized AI intelligence platform for smarter decisions.
-            </p>
+    <footer className="bg-gray-100 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-12">
+          {/* Main Content - 4 Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             
-            {/* Social Icons */}
-            <div className="flex gap-4">
-              {[
-                { icon: Twitter, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Github, href: "#" },
-                { icon: Instagram, href: "#" }
-              ].map((social, i) => (
-                <a
-                  key={i}
-                  href={social.href}
-                  className="w-10 h-10 bg-white border border-slate-300 rounded-lg flex items-center justify-center text-slate-700 hover:text-slate-900 hover:border-slate-400 transition-all duration-300"
+            {/* Left Column - Platform Description + Social Icons */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Platform</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Discover, compare, and choose the perfect AI tools for your workflow. Get expert guidance and stay ahead with the latest AI innovations.
+                </p>
+              </div>
+              
+              {/* Social Icons */}
+              <div className="flex space-x-4">
+                <a 
+                  href="https://twitter.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-blue-500 transition-colors"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <Twitter className="w-5 h-5" />
                 </a>
-              ))}
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-blue-600 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a 
+                  href="https://github.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-gray-900 transition-colors"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-pink-500 transition-colors"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Column 1 - Platform Links */}
+            <div className="space-y-4">
+              <h4 className="text-sm font-semibold text-gray-900 mb-3">Platform</h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    to="/categories" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Categories
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/compare" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Compare Tools
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/newsletter" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Newsletter
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/consulting" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Consulting
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 2 - For Providers Links */}
+            <div className="space-y-4">
+              <h4 className="text-sm font-semibold text-gray-900 mb-3">For Providers</h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    to="/providers/submit" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Submit Tool
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/providers/featured" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Featured Listing
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/providers/analytics" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Analytics
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/providers" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Pricing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3 - Company Links */}
+            <div className="space-y-4">
+              <h4 className="text-sm font-semibold text-gray-900 mb-3">Company</h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    to="/about" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/blog" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/careers" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/contact" 
+                    className="text-gray-600 hover:text-orange-500 transition-colors text-sm"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* Platform Links */}
-          <div>
-            <h4 className="font-display font-semibold text-slate-900 mb-6">Platform</h4>
-            <ul className="space-y-3">
-              {["Categories", "Compare Tools", "Newsletter", "Consulting"].map((item) => (
-                <li key={item}>
-                  <Link to="#" className="text-sm text-slate-800 hover:text-slate-900 transition-colors duration-300">
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Bottom Section - Newsletter + Copyright + Links */}
+          <div className="border-t border-gray-200 pt-8 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Newsletter */}
+              <div>
+                <h4 className="text-sm font-semibold text-gray-900 mb-4">Stay Updated</h4>
+                <p className="text-gray-600 text-sm mb-4">
+                  Subscribe to our newsletter for the latest AI tools and updates.
+                </p>
+                <form onSubmit={handleSubscribe} className="flex gap-2">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
+                  >
+                    <Send className="w-4 h-4" />
+                    Subscribe
+                  </button>
+                </form>
+              </div>
 
-          {/* Provider Links */}
-          <div>
-            <h4 className="font-display font-semibold text-slate-900 mb-6">For Providers</h4>
-            <ul className="space-y-3">
-              {["Submit Tool", "Featured Listing", "Analytics", "Pricing"].map((item) => (
-                <li key={item}>
-                  <Link to="#" className="text-sm text-slate-800 hover:text-slate-900 transition-colors duration-300">
-                    {item}
+              {/* Copyright + Links */}
+              <div className="space-y-4">
+                <div className="flex items-center space-x-6 text-sm text-gray-600">
+                  <Link to="/privacy" className="hover:text-orange-500 transition-colors">
+                    Privacy
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Links */}
-          <div>
-            <h4 className="font-display font-semibold text-slate-900 mb-6">Company</h4>
-            <ul className="space-y-3">
-              {["About Us", "Blog", "Careers", "Contact"].map((item) => (
-                <li key={item}>
-                  <Link to="#" className="text-sm text-slate-800 hover:text-slate-900 transition-colors duration-300">
-                    {item}
+                  <span className="text-gray-400">•</span>
+                  <Link to="/terms" className="hover:text-orange-500 transition-colors">
+                    Terms
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <div className="mt-16 pt-8 border-t border-slate-300">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="flex-1 max-w-lg">
-              <h4 className="font-display font-semibold text-slate-900 mb-2">Stay Updated</h4>
-              <p className="text-slate-700 text-sm">
-                Get the latest AI tools and industry insights delivered to your inbox.
-              </p>
+                  <span className="text-gray-400">•</span>
+                  <Link to="/cookies" className="hover:text-orange-500 transition-colors">
+                    Cookies
+                  </Link>
+                </div>
+                <div className="text-sm text-gray-500">
+                  © 2024 KNOWva. All rights reserved.
+                </div>
+              </div>
             </div>
-            
-            <div className="flex flex-col sm:flex-row gap-3 max-w-sm">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-white border-2 border-slate-300 rounded-lg text-slate-900 placeholder:text-slate-500 outline-none focus:border-[#FFB347] focus:ring-2 focus:ring-[#FFB347]/20 text-sm shadow-sm"
-              />
-              <button className="px-6 py-3 bg-gradient-to-r from-[#FFB347] to-[#F39C12] text-white font-medium rounded-lg hover:shadow-lg hover:shadow-[#FFB347]/20 transition-all duration-300 whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-700">
-            © 2026 KNOWva. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            {["Privacy", "Terms", "Cookies"].map((item) => (
-              <Link key={item} to="#" className="text-xs text-slate-800 hover:text-slate-900 transition-colors duration-300">
-                {item}
-              </Link>
-            ))}
           </div>
         </div>
       </div>

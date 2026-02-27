@@ -21,8 +21,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-3">
       <div className="w-full max-w-7xl">
         <div className="glass-morphism-pill flex items-center justify-between h-12 px-6">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="KNOWva" className="h-12 w-auto" />
+          <Link to="/" className="flex items-center gap-2 mt-5">
+            <img src={logo} alt="KNOWva" className="h-20 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
